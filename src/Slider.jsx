@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const SectionStyle = styled.section`
    border: 1px solid red;
    margin: 0 auto;
-   width: 400px;
+   /* width: 400px; */
 `;
 
 const SliderStyle = styled.div`
@@ -72,14 +72,16 @@ const Slider = ({
    // race,
    // type,
 }) => {
-   const doubleOne = datas.filter((data) => data.length > 2);
+   const doubleOne = [datas[0], datas[1]];
+   const doubleTwo = [datas[2], datas[3]];
+   const doubleThree = [datas[4], datas[5]];
 
    console.log(doubleOne);
 
    return (
       <SectionStyle>
          <SliderStyle>
-            {/* {doubleOne.map(({ id, name, card_images, type, desc }) => (
+            {doubleThree.map(({ id, name, card_images, type, desc }) => (
                <CardStyle key={id}>
                   <CardStyle__img key={card_images[0]}>
                      <img src={card_images[0].image_url} alt={`Card ${name}`} />
@@ -93,7 +95,7 @@ const Slider = ({
                      </CardStyle__description>
                   </CardStyle__content>
                </CardStyle>
-            ))} */}
+            ))}
          </SliderStyle>
          <div>
             <button>Anterior</button>
