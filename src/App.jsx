@@ -1,5 +1,14 @@
+import { MainStyled } from './components/Main.style';
+import Slider from './Slider';
+
 function App() {
-   return <></>;
+   return (
+      <>
+         <MainStyled>
+            <Slider />
+         </MainStyled>
+      </>
+   );
 }
 
 export default App;
