@@ -2,39 +2,49 @@ import React from 'react';
 import styled from 'styled-components';
 
 const SectionStyle = styled.section`
-   border: 1px solid red;
    margin: 0 auto;
-   /* width: 400px; */
+   width: 684px;
+   overflow: hidden;
 `;
 
 const SliderStyle = styled.div`
    display: flex;
+   /* gap: 16px; */
    flex-flow: row nowrap;
-   gap: 16px;
-   overflow: hidden;
+`;
+
+const SliderStyle__item = styled.div`
+   display: flex;
+   gap: 20px;
+   width: fit-content;
+   flex-shrink: 0;
+   padding: 30px;
 `;
 
 const CardStyle = styled.div`
-   width: 420px;
-   background-color: rgba(0, 0, 0, 0.01);
+   width: 300px;
+   background: rgba(0, 0, 0, 0.08);
    border-radius: 8px;
-   border: 1px solid rgba(0, 0, 0, 0.7);
-   flex-shrink: 0;
+   border: 1px solid rgba(0, 0, 0, 0.3);
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
 `;
 
 const CardStyle__img = styled.div`
    width: 100%;
-   height: 600px;
+   height: 400px;
 
    & img {
       height: 100%;
       width: 100%;
-      border-radius: 8px 8px 0 0;
+      border-radius: 8px;
    }
 `;
 
 const CardStyle__content = styled.div`
    padding: 12px 8px;
+   height: 100%;
 
    & h2 {
       text-align: center;
@@ -60,42 +70,67 @@ const CardStyle__description = styled.div`
    }
 `;
 
-const Slider = ({
-   datas,
-   // id,
-   // atk,
-   // card_images,
-   // def,
-   // frameType,
-   // level,
-   // name,
-   // race,
-   // type,
-}) => {
-   const doubleOne = [datas[0], datas[1]];
-   const doubleTwo = [datas[2], datas[3]];
-   const doubleThree = [datas[4], datas[5]];
-
-   console.log(doubleOne);
+const Slider = ({ datas }) => {
+   const doubleOne = datas.filter((item, index) => index < 2);
+   const doubleTwo = datas.filter((item, index) => index > 1 && index < 4);
+   const doubleThree = datas.filter((item, index) => index > 3);
 
    return (
       <SectionStyle>
          <SliderStyle>
-            {doubleThree.map(({ id, name, card_images, type, desc }) => (
-               <CardStyle key={id}>
-                  <CardStyle__img key={card_images[0]}>
-                     <img src={card_images[0].image_url} alt={`Card ${name}`} />
-                  </CardStyle__img>
-                  <CardStyle__content>
-                     <h2>{name}</h2>
-                     <p>{type}</p>
-                     <CardStyle__description>
-                        <h3>Descrição</h3>
-                        <p>{desc}</p>
-                     </CardStyle__description>
-                  </CardStyle__content>
-               </CardStyle>
-            ))}
+            <SliderStyle__item>
+               {doubleOne.map(({ id, name, card_images, type, desc }) => (
+                  <CardStyle key={id}>
+                     <CardStyle__img key={card_images[0]}>
+                        <img src={card_images[0].image_url} alt="" />
+                     </CardStyle__img>
+                     <CardStyle__content>
+                        <h2>{name}</h2>
+                        <p>{type}</p>
+                        <CardStyle__description>
+                           <h3>Description</h3>
+                           <p>{desc}</p>
+                        </CardStyle__description>
+                     </CardStyle__content>
+                  </CardStyle>
+               ))}
+            </SliderStyle__item>
+
+            <SliderStyle__item>
+               {doubleTwo.map(({ id, name, card_images, type, desc }) => (
+                  <CardStyle key={id}>
+                     <CardStyle__img key={card_images[0]}>
+                        <img src={card_images[0].image_url} alt="" />
+                     </CardStyle__img>
+                     <CardStyle__content>
+                        <h2>{name}</h2>
+                        <p>{type}</p>
+                        <CardStyle__description>
+                           <h3>Description</h3>
+                           <p>{desc}</p>
+                        </CardStyle__description>
+                     </CardStyle__content>
+                  </CardStyle>
+               ))}
+            </SliderStyle__item>
+
+            <SliderStyle__item>
+               {doubleThree.map(({ id, name, card_images, type, desc }) => (
+                  <CardStyle key={id}>
+                     <CardStyle__img key={card_images[0]}>
+                        <img src={card_images[0].image_url} alt="" />
+                     </CardStyle__img>
+                     <CardStyle__content>
+                        <h2>{name}</h2>
+                        <p>{type}</p>
+                        <CardStyle__description>
+                           <h3>Description</h3>
+                           <p>{desc}</p>
+                        </CardStyle__description>
+                     </CardStyle__content>
+                  </CardStyle>
+               ))}
+            </SliderStyle__item>
          </SliderStyle>
          <div>
             <button>Anterior</button>
