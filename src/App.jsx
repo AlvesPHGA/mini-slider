@@ -12,7 +12,7 @@ function App() {
          .then((json) => setDatas(json.data));
    }, []);
 
-   console.log(datas);
+   console.log(datas[0]);
 
    return (
       <>
